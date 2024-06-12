@@ -1,9 +1,21 @@
 import GameImages from "@/components/GameImages";
 import Image from "next/image";
+import { Metadata } from "next";
 import { PlusIcon } from "lucide-react";
 import { getSpecificGame } from "@/actions";
 
-const page = async ({ params }: { params: { slug: string } }) => {
+export const generateMetadata = ({ params }: Props): Metadata => {
+  return {
+    title: `${params.slug} | Z-Games`,
+    description: "Video Games",
+  };
+};
+type Props = {
+  params: {
+    slug: string;
+  };
+};
+const page = async ({ params }: Props) => {
   const slug = params.slug;
   const game = await getSpecificGame(slug);
   let filteredPlatforms = {
@@ -29,9 +41,9 @@ const page = async ({ params }: { params: { slug: string } }) => {
 
   return (
     <>
-      <div className={`px-4 md:px-8 lg:px-16 block lg:hidden`}>
+      <div className={`px-2 md:px-8 lg:px-16 block lg:hidden`}>
         <div className="flex flex-col items-center gap-8">
-          <div className="flex justify-center items-center gap-4 text-xs">
+          <div className="flex lg:flex-row flex-col justify-center items-center gap-4 text-xs">
             <div className="bg-white px-1 py-[2px] rounded-md text-black">
               {game.released}
             </div>
@@ -42,7 +54,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
             </div>
             <div>AVERAGE PLAYTIME: {game.playtime} HOURS</div>
           </div>
-          <h1 className="font-black text-4xl text-bold text-center tracking-wider">
+          <h1 className="font-black text-2xl text-bold text-center lg:text-4xl tracking-wider">
             {game.name}
           </h1>
           <div>
@@ -60,11 +72,11 @@ const page = async ({ params }: { params: { slug: string } }) => {
             {rating.id === 3 && <span>😑</span>}
             {rating.id === 1 && <span>⛔</span>}
           </h3>
-          <div className="flex justify-center items-center">
+          {/* <div className="flex justify-center items-center">
             <button className="flex justify-center items-center gap-2 mt-3 px-1 py-1 border rounded-md w-full text-center">
               <PlusIcon /> Add to my collection
             </button>
-          </div>
+          </div> */}
 
           <div className="flex flex-col gap-4">
             <div>
@@ -230,11 +242,11 @@ const page = async ({ params }: { params: { slug: string } }) => {
               {rating.id === 3 && <span>😑</span>}
               {rating.id === 1 && <span>⛔</span>}
             </h3>
-            <div className="flex justify-center items-center">
+            {/* <div className="flex justify-center items-center">
               <button className="flex justify-center items-center gap-2 mt-3 px-1 py-1 border rounded-md w-fit text-center">
                 <PlusIcon /> Add to my collection
               </button>
-            </div>
+            </div> */}
             <div className="flex flex-col gap-4">
               <div>
                 <h3>About</h3>

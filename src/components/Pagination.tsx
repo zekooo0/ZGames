@@ -2,7 +2,6 @@ import Link from "next/link";
 
 const Pagination = ({ next, previous }: { next: string; previous: string }) => {
   const nextQuery = next?.split("&").slice(1).join("&");
-  console.log(nextQuery);
   const previousQuery = previous?.split("&").slice(1).join("&");
 
   return (

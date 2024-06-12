@@ -7,10 +7,13 @@ const Navbar = () => {
   revalidatePath("/");
 
   return (
-    <div className="relative flex justify-between items-center gap-20 px-4 md:px-8 lg:px-16 h-20">
+    <div className="relative flex justify-between items-center gap-4 lg:gap-20 px-4 md:px-8 lg:px-16 h-20">
       <h1>
         {" "}
-        <Link href={"/"} className="font-bold text-2xl text-cyan-400">
+        <Link
+          href={"/"}
+          className="font-bold text-cyan-400 text-lg lg:text-2xl"
+        >
           ZGames
         </Link>
       </h1>

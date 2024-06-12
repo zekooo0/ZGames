@@ -28,7 +28,7 @@ const Menu = () => {
                 Browse
               </Link>
               <div className="flex flex-col space-y-4 mt-4 pl-2">
-                <Link href={"/"}>Collections</Link>
+                <Link href={"/collection"}>Collections</Link>
                 <Link href={"/"}>Platforms</Link>
                 <Link href={"/"}>Stores</Link>
                 <Link href={"/"}>Genres</Link>

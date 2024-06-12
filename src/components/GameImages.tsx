@@ -10,11 +10,10 @@ const GameImages = ({ images, trailers }: { images: any; trailers: any }) => {
   } else {
     media = [...images];
   }
-  console.log(media);
   const [index, setIndex] = useState(0);
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="relative w-[600px] h-[333px]">
+      <div className="relative w-full lg:w-[600px] lg:h-[333px]">
         {index === 0 && trailers ? (
           <video controls autoPlay muted>
             <source src={media[0]?.data?.max} type="video/mp4" />

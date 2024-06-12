@@ -73,7 +73,6 @@ import { useState } from "react";
 export function Filter() {
   const [orderBy, setOrderBy] = useState("");
   const [platform, setPlatform] = useState("");
-  console.log(orderBy, platform);
   return (
     <div className="flex gap-4 my-5">
       <Select onValueChange={setOrderBy} value={orderBy}>

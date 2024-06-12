@@ -15,15 +15,15 @@ interface IGenre {
   name: string;
 }
 interface GameCardProps {
-  imageSrc: string;
-  screenShots: string[];
-  name: string;
-  platforms: IPlatform[];
-  releaseDate: string;
-  genres: IGenre[];
-  metacritic: string;
-  slug: string;
-  id: string;
+  imageSrc?: string;
+  screenShots?: string[];
+  name?: string;
+  platforms?: IPlatform[];
+  releaseDate?: string;
+  genres?: IGenre[];
+  metacritic?: string;
+  slug?: string;
+  id?: string;
 }
 
 const GameCard: React.FC<GameCardProps> = ({
@@ -39,6 +39,22 @@ const GameCard: React.FC<GameCardProps> = ({
 }) => {
   const [hover, setHover] = useState(false);
 
+  const handleAddToCollection = () => {
+    const game = {
+      id,
+      name,
+      releaseDate,
+      imageSrc,
+      platforms,
+      genres,
+      metacritic,
+      slug,
+    };
+    const games = localStorage.getItem("zgames");
+    const gamesArray = games ? JSON.parse(games) : [];
+    localStorage.setItem("zgames", JSON.stringify([...gamesArray, game]));
+  };
+
   let filteredPlatforms = {
     pc: false,
     xbox: false,
@@ -46,7 +62,7 @@ const GameCard: React.FC<GameCardProps> = ({
     nintendo: false,
   };
 
-  const filterPlatforms = platforms.forEach((platform) => {
+  const filterPlatforms = platforms?.forEach((platform) => {
     if (platform.platform.slug.startsWith("pc")) {
       filteredPlatforms.pc = true;
     } else if (platform.platform.slug.startsWith("xbox")) {
@@ -60,7 +76,7 @@ const GameCard: React.FC<GameCardProps> = ({
 
   return (
     <div
-      className={`relative bg-main shadow-md h-auto  ${
+      className={`relative  bg-main shadow-md h-auto  ${
         hover
           ? "rounded-tl-lg rounded-tr-lg scale-105 transition-all duration-300 delay-100 z-30"
           : "rounded-lg"
@@ -72,7 +88,7 @@ const GameCard: React.FC<GameCardProps> = ({
         {imageSrc && (
           <Image
             src={imageSrc}
-            alt={name}
+            alt={name as string}
             width={600}
             height={600}
             className="rounded-tl-lg rounded-tr-lg object-contain"
@@ -137,7 +153,10 @@ const GameCard: React.FC<GameCardProps> = ({
         <Link href={`/${slug}`} className="font-bold text-2xl leading-7">
           {name}
         </Link>
-        <button className="flex justify-center items-center gap-2 mt-3 py-1 border rounded-md w-full text-center">
+        <button
+          className="flex justify-center items-center gap-2 mt-3 py-1 border rounded-md w-full text-center"
+          onClick={handleAddToCollection}
+        >
           <PlusIcon /> Add to my collection
         </button>
         {hover && (
@@ -148,7 +167,7 @@ const GameCard: React.FC<GameCardProps> = ({
             <div className="flex flex-wrap justify-between items-center">
               <p> Genres</p>{" "}
               <div className="flex flex-wrap items-center gap-1">
-                {genres.map((genre, i) => (
+                {genres?.map((genre, i) => (
                   <Link href={"/"} key={genre.id} className="underline">
                     {i !== genres.length - 1 ? genre.name + ", " : genre.name}
                   </Link>
