@@ -32,10 +32,10 @@ export default function RootLayout({
         >
           <div>
             <Navbar />
-            <div className="relative flex lg:gap-4 px-2 md:px-8">
+            <div className="relative flex">
               <Aside />
               <div className="flex-1 lg:flex-[7]">
-                <main>{children}</main>
+                <main className="lg:gap-4 px-2 md:px-8">{children}</main>
                 <Footer />
               </div>
             </div>
