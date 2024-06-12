@@ -41,7 +41,7 @@ const page = async ({ params }: Props) => {
 
   return (
     <>
-      <div className={`px-2 md:px-8 lg:px-16 block lg:hidden`}>
+      <div className={`px-2 md:px-8 lg:px-16 max-w-full block lg:hidden`}>
         <div className="flex flex-col items-center gap-8">
           <div className="flex lg:flex-row flex-col justify-center items-center gap-4 text-xs">
             <div className="bg-white px-1 py-[2px] rounded-md text-black">

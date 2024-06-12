@@ -3,7 +3,7 @@ import React from "react";
 
 const Aside = () => {
   return (
-    <div className="top-0 sticky lg:flex flex-col flex-1 space-y-10 hidden pt-10 h-fit">
+    <div className="top-0 sticky lg:flex flex-col flex-1 space-y-10 hidden pt-10 pl-2 md:pl-8 h-fit">
       <div className="flex justify-between items-center">
         <Link href={"/"} className="font-semibold text-2xl">
           Home

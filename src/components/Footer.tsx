@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="flex flex-col gap-2 my-5">
+    <footer className="flex flex-col gap-2 my-5 px-2">
       <div className="bg-gray-500 w-full h-[1px]" />
       <div className="mx-auto text-center">
         Developed By

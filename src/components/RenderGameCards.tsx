@@ -37,7 +37,7 @@ const RenderGameCards = ({ games }: { games: IGames }) => {
       className="my-masonry-grid"
       columnClassName="my-masonry-grid_column"
     >
-      {games.results.map((game) => (
+      {games?.results.map((game) => (
         <GameCard
           key={game.id}
           id={game.id}
